@@ -1,7 +1,11 @@
 
 
 
-#' @Title Obter a rota para cada veículo
+#' Obter a rota para cada veículo
+#' @description
+#' Obter a rota para cada veiculo
+#'
+#'
 #'
 #' @param vetor nomes das variáveis de valor 1 na solução do modelo (solução obtida utilizando por exemplo o pacote`lpSolve`)
 #'

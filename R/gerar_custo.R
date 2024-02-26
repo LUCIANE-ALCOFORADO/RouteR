@@ -35,7 +35,12 @@
 #'
 #'n=5
 #'k=1
-#'custo <- gerar_custo(n,n,k,vetor_custos=c(2.8,2,100,100,2.8,2.4,4.4,5.2,2,2.1,4.2,5,100,3.6,4.1,0.65,0,0,0,0))
+#'custo <- gerar_custo(n,n,k,
+#'vetor_custos=c(2.8,2,100,100,
+#'2.8,2.4,4.4,5.2,
+#'2,2.1,4.2,5,
+#'100,3.6,4.1,0.65,
+#'0,0,0,0))
 #'print(custo)
 #'custo2 <- gerar_custo(-1, 5, 3)
 #'print(custo2)

@@ -10,6 +10,10 @@
 #'
 
 ordenar_rota <- function(rotas_tipo) {
+   # dummies to trick R CMD check
+  Veiculo <- NULL; origem <- NULL; Rota <- NULL; destino <- NULL
+
+
   # Ordenar os pontos de partida com base na distância entre o segundo número de uma linha e o primeiro número da linha seguinte
   rotas_tipo<- rotas_tipo %>% dplyr::mutate(prod=as.numeric(substr(rotas_tipo$Rota, 1, 1))*as.numeric(substr(rotas_tipo$Rota, 2, 2)),origem=as.numeric(substr(rotas_tipo$Rota, 1, 1)),destino=as.numeric(substr(rotas_tipo$Rota, 2, 2))) %>%
     dplyr::arrange(Veiculo,prod, origem) %>% dplyr::select(Veiculo,Rota,origem,destino)
