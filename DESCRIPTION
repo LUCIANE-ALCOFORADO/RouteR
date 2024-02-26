@@ -1,0 +1,24 @@
+Package: RouteR
+Type: Package
+Title: Modeling Vehicle Routing Problems
+Version: 0.1.0
+Author: Luciane Ferreira Alcoforado
+Maintainer: The package maintainer <lucianea@id.uff.br>
+Description: Auxilia o pesquisador a criar a tabela de coeficientes para o modelo de otimização linear inteira do problema de roteamento de veículos partindo de uma origem, visitando várias cidades e retornando para a origem. Trata-se de modelagem clássica de problema de transporte tratado no livro de BELFIORE, Patrícia; FÁVERO, Luiz Paulo. Pesquisa Operacional para Cursos de Administração, Contabilidade e Economia. 1 ed. Elsevier, 2012. 360 p.(ISBN 978-85-352-3421-3).
+License: GPL-3
+Encoding: UTF-8
+Imports: 
+    dplyr (>= 1.1.4),
+    tidyr (>= 1.3.1),
+    magrittr,
+    tibble,
+    lpSolve (>= 5.6.20)
+RoxygenNote: 7.2.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    kableExtra,
+    stats,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
