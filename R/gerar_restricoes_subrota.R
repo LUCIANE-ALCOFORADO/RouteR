@@ -33,7 +33,7 @@ if (i_limit <= 1){warning("Valor de i_limit deve ser maior do que 1, será consi
     j_limit <- i_limit}
 indices<-tidyr::expand_grid(i = 1:i_limit, j = 1:j_limit, k=1:k_limit)
 indices<-indices %>% dplyr::filter(i!=j) %>% dplyr::mutate(x=paste0("x",i,j,k))
-ij<-t(combn(i_limit,n))
+ij<-t(utils::combn(i_limit,n))
 df<-tidyr::expand_grid(ij,k=1:k_limit)
 indices_subrota<-data.frame(matrix(unlist(df), nrow = nrow(df), byrow = F))
 restricoes <- matrix(0, ncol = (i_limit * j_limit*k_limit - i_limit*k_limit) , nrow = k_limit*(dim(combn(i_limit,n))[2]))

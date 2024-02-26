@@ -23,6 +23,8 @@
 #' restricoes_equilibrio3 <- gerar_restricoes_equilibrio(5,1,3)
 #' print(restricoes_equilibrio3)
 #' @export
+#' @importFrom sessioninfo session_info
+#' sessioninfo::session_info
 gerar_restricoes_equilibrio<-function(i_limit, j_limit, k_limit, n_restricao=1) {
    if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
   j_limit <- i_limit}

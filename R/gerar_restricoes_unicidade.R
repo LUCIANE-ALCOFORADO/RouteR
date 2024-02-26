@@ -25,7 +25,6 @@ if (i_limit <= 1){warning("Valor de i_limit deve ser maior do que 1, será consi
     i_limit <- 2
     j_limit <- i_limit}
     restricoes <- matrix(0, ncol = (i_limit * j_limit*k_limit - i_limit*k_limit) , nrow = (i_limit-1))
-#restricoes <- matrix(0)
     Res <- integer()
     cont=1
   for (i1 in 2:i_limit) {
