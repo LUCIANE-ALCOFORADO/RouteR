@@ -1,5 +1,7 @@
 #' Gera restrições de saída da origem
 #'
+#' @author Luciane Ferreira Alcoforado
+#'
 #'@description
 #'Gera as restrições de saída da origem do modelo, ou seja, todo veículo deve sair do ponto 1 (origem).
 #'

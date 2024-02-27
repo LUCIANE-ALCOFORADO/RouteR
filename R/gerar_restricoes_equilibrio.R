@@ -1,5 +1,7 @@
 #' Gera Restrições de Equilíbrio
-#'@description
+#'
+#' @author Luciane Ferreira Alcoforado
+#' @description
 #'Gera as restrições de equilíbrio do modelo, ou seja, todo veículo que chega em um ponto de passagem da rota deve partir para outro ponto.
 #'
 #' @param i_limit número de nós do problema que representam a origem num trecho da rota
@@ -8,7 +10,7 @@
 #' @param n_restricao número de controle da restrição, por padrão terá ser valor igual a 1, podendo ser renumerado de acordo com a modelagem adotada.
 #'
 #' @return retorna um vetor contendo as restrições de equilíbrio.
-
+#' @export
 #'
 #' @examples
 #' # Exemplo de uso da função
@@ -22,9 +24,7 @@
 #' print(restricoes_equilibrio2)
 #' restricoes_equilibrio3 <- gerar_restricoes_equilibrio(5,1,3)
 #' print(restricoes_equilibrio3)
-#' @export
-#' @importFrom sessioninfo session_info
-#' sessioninfo::session_info
+#'
 gerar_restricoes_equilibrio<-function(i_limit, j_limit, k_limit, n_restricao=1) {
    if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
   j_limit <- i_limit}

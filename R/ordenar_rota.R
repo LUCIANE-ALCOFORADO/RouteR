@@ -1,4 +1,7 @@
 #' @title Função para ordenar os pontos de partida
+#'
+#' @author Luciane Ferreira Alcoforado
+#'
 #' @description
 #' Organiza a solução do modelo por tipo de veículo e rota, explicitando o início e fim de cada rota.
 #'
@@ -7,12 +10,14 @@
 #'
 #' @return Dataframe com o tipo de veículo, a rota, a origem e o destino de cada rota
 #' @export
+#' @examples
+#' vetor <- c("x121", "x122", "x125", "x211", "x212", "x213", "x311", "x312", "x313", "x135")
+#' obter_rotas(vetor)
+#' ordenar_rota(obter_rotas(vetor))
 #'
-
 ordenar_rota <- function(rotas_tipo) {
    # dummies to trick R CMD check
   Veiculo <- NULL; origem <- NULL; Rota <- NULL; destino <- NULL
-
 
   # Ordenar os pontos de partida com base na distância entre o segundo número de uma linha e o primeiro número da linha seguinte
   rotas_tipo<- rotas_tipo %>% dplyr::mutate(prod=as.numeric(substr(rotas_tipo$Rota, 1, 1))*as.numeric(substr(rotas_tipo$Rota, 2, 2)),origem=as.numeric(substr(rotas_tipo$Rota, 1, 1)),destino=as.numeric(substr(rotas_tipo$Rota, 2, 2))) %>%
@@ -22,7 +27,4 @@ ordenar_rota <- function(rotas_tipo) {
   return(rotas_tipo)
 }
 
-#' @examples
-#' vetor <- c("x121", "x122", "x125", "x211", "x212", "x213", "x311", "x312", "x313", "x135")
-#' obter_rotas(vetor)
-#' ordenar_rota(obter_rotas(vetor))
+

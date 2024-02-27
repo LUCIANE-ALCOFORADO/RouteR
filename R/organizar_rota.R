@@ -1,9 +1,9 @@
-
-
-
-#' Obter a rota para cada veículo
+#' Organiza a rota para cada veículo
+#'
+#'@author Luciane Ferreira Alcoforado
+#'
 #' @description
-#' Obter a rota para cada veiculo
+#' Organizar a rota para cada veiculo com base em uma solução
 #'
 #'
 #'

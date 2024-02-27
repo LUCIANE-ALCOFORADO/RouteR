@@ -1,5 +1,7 @@
 #' Gera restrição de unicidade
 #'
+#' @author Luciane Ferreira Alcoforado
+#'
 #' @description
 #' Cada cliente (nó) recebe visita de apenas um dos veículos
 #'
@@ -9,14 +11,14 @@
 #' @param k_limit número de veículos do problema
 #' @param n_restricao número de controle da restrição, por padrão terá ser valor igual a 1, podendo ser renumerada de acordo com a modelagem adotada.
 #' @return retorna um dataframe com as restrições de unicidade de visita de um dos veículos
+#' @export
+#'
 #' @examples
 #' # Exemplo de uso da função
 #' restricoes_unicidade <- gerar_restricoes_unicidade(5,5,3,7)
 #' print(restricoes_unicidade)
 #' restricoes_unicidade <- gerar_restricoes_unicidade(5,5,1,1)
 #' print(restricoes_unicidade)
-
-#' @export
 #'
 gerar_restricoes_unicidade <- function(i_limit, j_limit, k_limit, n_restricao) {
 if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")

@@ -1,13 +1,9 @@
-#'#Funções para gerar planilha de dados para o
-#'#Problema de roteamento de k veículos, k=1, ..., disponibilidade de veículos.
-#'#Considerando uma origem, n clientes e retorna para origem.
 
-#'#O usuário deverá informar quantos clientes, quantos veículos
-#'@title Produz os coeficientes do vetor custo do modelo de otimização linear de roteamento de veículos
+#'Produz os coeficientes do vetor custo do modelo de otimização linear de roteamento de veículos
+
+#'@description Produz um vetor contendo os custos (distância entre dois nós) para o modelo matemático
 #'@name gerar_custo
 #'@author Luciane Ferreira Alcoforado
-#'@description Produz um vetor contendo os custos (distância entre dois nós) para o modelo matemático
-
 #'@param i_limit Número inteiro que representa a quantidade de pontos (cidades) de partida no modelo, incluindo a origem.
 #'@param j_limit Número inteiro que representa a quantidade de pontos (cidades) de chegada no modelo, incluindo a origem como destino final.
 #'@param k_limit Número inteiro que representa a quantidade de veículos que partem da origem.
@@ -15,7 +11,7 @@
 #'@return Dataframe contendo os coeficientes da função objetivo do modelo, ou seja, as distâncias entre cada trecho (ij) no veículo k.
 #'@import tidyr
 #'@importFrom("stats", "runif")
-
+#'@export
 #'
 #'@examples
 #'# Exemplo de uso da função sem vetor_custos (usando runif para gerar custos)
@@ -44,7 +40,7 @@
 #'print(custo)
 #'custo2 <- gerar_custo(-1, 5, 3)
 #'print(custo2)
-#'@export
+
 gerar_custo <- function(i_limit, j_limit, k_limit, vetor_custos = NULL) {
    if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
   j_limit <- i_limit}

@@ -1,4 +1,7 @@
 #' Gera restrições de subrota
+#'
+#' @author Luciane Ferreira Alcoforado
+#'
 #' @description
 #' Gera restrições de subrota de tamanho n-1, em que n representa o número de pontos na sub rota e deve variar de 2 até i_limit. Por padrão n = 2.
 #'

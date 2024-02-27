@@ -1,5 +1,7 @@
 #' Gera restrições de retorno para origem
 #'
+#' @author Luciane Ferreira Alcoforado
+#'
 #'@description
 #'Gera as restrições de retorno para a origem do modelo, ou seja, todo veículo deve retornar para o ponto 1 (origem).
 #'
