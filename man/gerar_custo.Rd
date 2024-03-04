@@ -21,31 +21,31 @@ Dataframe contendo os coeficientes da função objetivo do modelo, ou seja, as d
 \description{
 Produz um vetor contendo os custos (distância entre dois nós) para o modelo matemático
 }
-\details{
-#Funções para gerar planilha de dados para o
-#Problema de roteamento de k veículos, k=1, ..., disponibilidade de veículos.
-#Considerando uma origem, n clientes e retorna para origem.
-#O usuário deverá informar quantos clientes, quantos veículos
-}
 \examples{
 # Exemplo de uso da função sem vetor_custos (usando runif para gerar custos)
 resultado1 <- gerar_custo(5, 5, 3)
-print(resultado1)
+#print(resultado1)
 # Exemplo de uso da função com vetor_custos fornecido pelo usuário
 vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
-resultado2 <- gerar_custo(7, 10, 3, vetor_custos_usuario)
-print(resultado2)
+#resultado2 <- gerar_custo(7, 10, 3, vetor_custos_usuario)
+#print(resultado2)
 # Exemplo de uso da função com vetor_custos fornecido pelo usuário
 vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60)
 resultado3 <- gerar_custo(2, 2, 3, vetor_custos_usuario)
-print(resultado3)
+#print(resultado3)
 
 n=5
 k=1
-custo <- gerar_custo(n,n,k,vetor_custos=c(2.8,2,100,100,2.8,2.4,4.4,5.2,2,2.1,4.2,5,100,3.6,4.1,0.65,0,0,0,0))
+
+vetor_custos=c(2.8,2,100,100,
++ 2.8,2.4,4.4,5.2,
++ 2,2.1,4.2,5,
++ 100,3.6,4.1,0.65,
++ 0,0,0,0)
+custo <- gerar_custo(n,n,k,vetor_custos)
 print(custo)
 custo2 <- gerar_custo(-1, 5, 3)
-print(custo2)
+#print(custo2)
 }
 \author{
 Luciane Ferreira Alcoforado

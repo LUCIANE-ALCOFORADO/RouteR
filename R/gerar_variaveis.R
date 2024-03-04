@@ -19,6 +19,7 @@
 #' gerar_variaveis(4,4,2)
 #'
 gerar_variaveis<-function(i_limit, j_limit, k_limit=1){
+  i=NULL; j=NULL; k=NULL #truque teste
   if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
   j_limit <- i_limit}
   if (i_limit <= 1){warning("Valor de i_limit deve ser maior do que 1, será considerado igual a 2")

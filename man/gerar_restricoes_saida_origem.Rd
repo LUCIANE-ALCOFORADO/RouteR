@@ -29,3 +29,6 @@ restricoes_saida1 <- gerar_restricoes_saida_origem(5,5,3,11)
 print(restricoes_retorno1)
 
 }
+\author{
+Luciane Ferreira Alcoforado
+}

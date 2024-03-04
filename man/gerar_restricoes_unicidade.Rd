@@ -27,4 +27,8 @@ restricoes_unicidade <- gerar_restricoes_unicidade(5,5,3,7)
 print(restricoes_unicidade)
 restricoes_unicidade <- gerar_restricoes_unicidade(5,5,1,1)
 print(restricoes_unicidade)
+
+}
+\author{
+Luciane Ferreira Alcoforado
 }

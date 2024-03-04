@@ -31,3 +31,6 @@ restricoes_retorno2 <- gerar_restricoes_retorno_origem(2,7,3,11)
 print(restricoes_retorno2)
 
 }
+\author{
+Luciane Ferreira Alcoforado
+}

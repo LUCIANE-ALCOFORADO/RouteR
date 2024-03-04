@@ -4,14 +4,25 @@
 \alias{ordenar_rota}
 \title{Função para ordenar os pontos de partida}
 \usage{
-ordenar_rota(rotas_tipo)
+ordenar_rota(vetor)
 }
 \arguments{
-\item{rotas_tipo}{Dataframe com duas colunas: uma contendo a rota e outra contendo o tipo de veículo}
+\item{vetor}{vetor contendo as variáveis xijk do modelo}
 }
 \value{
 Dataframe com o tipo de veículo, a rota, a origem e o destino de cada rota
 }
 \description{
 Organiza a solução do modelo por tipo de veículo e rota, explicitando o início e fim de cada rota.
+}
+\examples{
+vetor <- c("x121", "x142", "x175", "x231", "x452", "x613", "x311", "x512", "x163", "x715")
+organizar_rota(vetor)
+ordenar_rota(vetor)
+
+vetor<-c("x131", "x241", "x321", "x451", "x511")
+ordenar_rota(vetor)
+}
+\author{
+Luciane Ferreira Alcoforado
 }

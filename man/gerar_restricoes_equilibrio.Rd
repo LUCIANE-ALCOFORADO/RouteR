@@ -33,4 +33,8 @@ restricoes_equilibrio2 <- gerar_restricoes_equilibrio(1,5,3)
 print(restricoes_equilibrio2)
 restricoes_equilibrio3 <- gerar_restricoes_equilibrio(5,1,3)
 print(restricoes_equilibrio3)
+
+}
+\author{
+Luciane Ferreira Alcoforado
 }

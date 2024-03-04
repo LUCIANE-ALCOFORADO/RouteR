@@ -14,10 +14,10 @@
 #'
 #' # Exemplo de uso da função
 #' vetor <- c("x121", "x122", "x125", "x211", "x212", "x213", "x311", "x312", "x313", "x135")
-#' rotas_por_tipo <- obter_rotas(vetor)
+#' rotas_por_tipo <- organizar_rota(vetor)
 #'
 #' @export
-obter_rota <- function(vetor) {
+organizar_rota <- function(vetor) {
   # Obter os tipos de veículos identificados
   tipos_veiculos <- sort(unique(as.numeric(substr(vetor, 4, 4))))
 

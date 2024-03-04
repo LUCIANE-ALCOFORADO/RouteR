@@ -36,3 +36,6 @@ print(restricoes_subrota3)
 restricoes_subrota4 <- gerar_restricoes_subrota(6,5,1,1,4)
 print(restricoes_subrota4)
 }
+\author{
+Luciane Ferreira Alcoforado
+}

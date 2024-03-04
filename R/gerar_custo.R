@@ -1,6 +1,6 @@
 
-#'Produz os coeficientes do vetor custo do modelo de otimização linear de roteamento de veículos
-
+#' Produz os coeficientes do vetor custo do modelo de otimização linear de roteamento de veículos
+#'
 #'@description Produz um vetor contendo os custos (distância entre dois nós) para o modelo matemático
 #'@name gerar_custo
 #'@author Luciane Ferreira Alcoforado
@@ -16,30 +16,31 @@
 #'@examples
 #'# Exemplo de uso da função sem vetor_custos (usando runif para gerar custos)
 #'resultado1 <- gerar_custo(5, 5, 3)
-#'print(resultado1)
+#'#print(resultado1)
 
 #'# Exemplo de uso da função com vetor_custos fornecido pelo usuário
 #'vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
-#'resultado2 <- gerar_custo(7, 10, 3, vetor_custos_usuario)
-#'print(resultado2)
+#'#resultado2 <- gerar_custo(7, 10, 3, vetor_custos_usuario)
+#'#print(resultado2)
 
 
 #'# Exemplo de uso da função com vetor_custos fornecido pelo usuário
 #'vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60)
 #'resultado3 <- gerar_custo(2, 2, 3, vetor_custos_usuario)
-#'print(resultado3)
+#'#print(resultado3)
 #'
 #'n=5
 #'k=1
-#'custo <- gerar_custo(n,n,k,
+#'
 #'vetor_custos=c(2.8,2,100,100,
-#'2.8,2.4,4.4,5.2,
-#'2,2.1,4.2,5,
-#'100,3.6,4.1,0.65,
-#'0,0,0,0))
+#'+ 2.8,2.4,4.4,5.2,
+#'+ 2,2.1,4.2,5,
+#'+ 100,3.6,4.1,0.65,
+#'+ 0,0,0,0)
+#'custo <- gerar_custo(n,n,k,vetor_custos)
 #'print(custo)
 #'custo2 <- gerar_custo(-1, 5, 3)
-#'print(custo2)
+#'#print(custo2)
 
 gerar_custo <- function(i_limit, j_limit, k_limit, vetor_custos = NULL) {
    if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
@@ -55,8 +56,7 @@ gerar_custo <- function(i_limit, j_limit, k_limit, vetor_custos = NULL) {
     }
   }
 
-  vetor_caracteres <- character()
-  vetor_custos <- numeric()
+vetor_caracteres <- character()
 if (is.null(vetor_custos) || length(vetor_custos) == 0) {
   for (i in 1:i_limit) {
     for (j in 1:j_limit) {
