@@ -4,8 +4,8 @@
 #'@description Produz um vetor contendo os custos (distância entre dois nós) para o modelo matemático
 #'@name gerar_custo
 #'@author Luciane Ferreira Alcoforado
-#'@param i_limit Número inteiro que representa a quantidade de pontos (cidades) de partida no modelo, incluindo a origem.
-#'@param j_limit Número inteiro que representa a quantidade de pontos (cidades) de chegada no modelo, incluindo a origem como destino final.
+#'@param i_limit vetor de número inteiro que representa a quantidade de pontos (cidades) de partida no modelo, incluindo a origem.
+#'@param j_limit vetor de Número inteiro que representa a quantidade de pontos (cidades) de chegada no modelo, incluindo a origem como destino final.
 #'@param k_limit Número inteiro que representa a quantidade de veículos que partem da origem.
 #'@param vetor_custos  Vetor de números reais representando a distância entre o trecho (ij) no veículo k, deve seguir a ordem estabelecida na sequencia de variáveis do modelo. Caso não seja fornecido, a função gera valores aleatórios (runif) e simétricos, ou seja distância entre i e j é a mesma entre j e i.
 #'@return Dataframe contendo os coeficientes da função objetivo do modelo, ou seja, as distâncias entre cada trecho (ij) no veículo k.
