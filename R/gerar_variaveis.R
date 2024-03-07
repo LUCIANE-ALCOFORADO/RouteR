@@ -3,7 +3,7 @@
 #' @author Luciane Ferreira Alcoforado
 #'
 #' @description
-#' Gera um vetor contendo os nomes das variáveis x_{ijk}. Na modelagem x_{ijk} é uma variável binária igual a 1 se o trecho (ij) for incluído na rota com o veículo k; e igual a zero se o trecho não for incluido na rota com o veículo k.
+#' Gera um vetor contendo os nomes das variáveis x_{i,j,k}. Na modelagem x_{i,j,k} é uma variável binária igual a 1 se o trecho (i,j) for incluído na rota com o veículo k; e igual a zero se o trecho não for incluido na rota com o veículo k.
 #'
 #'
 #' @param i_limit Número inteiro que representa a quantidade de pontos (cidades) de partida no modelo, incluindo a origem.
@@ -26,5 +26,5 @@ gerar_variaveis<-function(i_limit, j_limit, k_limit=1){
     i_limit <- 2
     j_limit <- i_limit}
   indices<-tidyr::expand_grid(i = 1:i_limit, j = 1:j_limit, k=1:k_limit)
-  indices<-indices %>% dplyr::filter(i!=j) %>% dplyr::mutate(x=paste0("x",i,j,k))
+  indices<-indices %>% dplyr::filter(i!=j) %>% dplyr::mutate(x=paste0("x_",i,",",j,",",k)) #separa os indices dos vértices com ','
   return(indices)}
