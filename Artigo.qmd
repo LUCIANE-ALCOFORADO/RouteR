@@ -1,0 +1,64 @@
+---
+title: "Artigo"
+format: docx
+editor: visual
+---
+
+## Códigos
+
+```{r}
+require(magrittr)
+RouteR::gerar_variaveis(5,5,3)
+custo=c(2,2,4,4,2,2,6,6,4,4,6,6)
+RouteR::gerar_custo(3,3,2,custo)
+RouteR::gerar_restricoes_saida_origem(3,3,2)
+RouteR::gerar_restricoes_retorno_origem(3,3,2)
+RouteR::gerar_restricoes_unicidade(3,3,2)
+RouteR::gerar_restricoes_equilibrio(3,3,2)
+RouteR::gerar_restricoes_subrota(4,4,1, n_restricao=1, n=2)
+
+n=5
+k=1
+vetor_custos=c(2.8,2,100,100,
++ 2.8,2.4,4.4,5.2,
++ 2,2.1,4.2,5,
++ 100,3.6,4.1,0.65,
++ 0,0,0,0)
+custo <- RouteR::gerar_custo(n,n,k,vetor_custos)
+print(custo)
+n_restricao<-1
+saida <- RouteR::gerar_restricoes_saida_origem(n,n,k,n_restricao)
+saida
+n_restricao<- nrow(saida)+1
+n_restricao
+retorno <- RouteR::gerar_restricoes_retorno_origem(n,n,k,n_restricao)
+retorno
+n_restricao<- n_restricao+nrow(retorno)
+n_restricao
+equilibrio <- RouteR::gerar_restricoes_equilibrio(n,n,k,n_restricao)
+equilibrio
+n_restricao<- n_restricao+nrow(equilibrio)
+n_restricao
+unicidade <- RouteR::gerar_restricoes_unicidade(n,n,k,n_restricao)
+unicidade
+
+Dados <- dplyr::bind_rows(custo,saida,retorno,equilibrio,unicidade)
+RouteR::gerar_rota(Dados)
+
+vetor_rota<-RouteR::gerar_rota(Dados)$rota$var
+#Organizando a rota obtida
+RouteR::organizar_rota(vetor_rota)
+
+subrota1 <- RouteR::gerar_restricoes_subrota(n,n,k,n_restricao,2)
+
+Dados <- dplyr::bind_rows(custo,saida,retorno,equilibrio,unicidade, subrota1)
+RouteR::gerar_rota(Dados)
+
+vetor_rota<-RouteR::gerar_rota(Dados)$rota$var
+#Organizando a rota obtida
+RouteR::organizar_rota(vetor_rota)
+
+RouteR::ordenar_rota(vetor_rota)
+
+```
+

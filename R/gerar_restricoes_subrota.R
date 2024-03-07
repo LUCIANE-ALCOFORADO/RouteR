@@ -26,7 +26,7 @@
 #' print(restricoes_subrota3)
 #' restricoes_subrota4 <- gerar_restricoes_subrota(6,5,1,1,4)
 #' print(restricoes_subrota4)
-gerar_restricoes_subrota <- function(i_limit, j_limit, k_limit, n_restricao, n=2) {
+gerar_restricoes_subrota <- function(i_limit, j_limit, k_limit, n_restricao=1, n=2) {
 #n é o tamanho (número de trechos) da sub-rota
 if (n>i_limit-2){return("insira n <= i_limit-2")}
 if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
