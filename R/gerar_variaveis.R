@@ -15,16 +15,14 @@
 #'@export
 #'
 #' @examples
-#' gerar_variaveis(3,3)
-#' gerar_variaveis(4,4,2)
+#' gerar_variaveis(i=c(1,3:5),j=c(1,8:10),k=2)
 #'
-gerar_variaveis<-function(i_limit, j_limit, k_limit=1){
+gerar_variaveis<-function(i_limit=1:2, j_limit=1:4, k_limit=1){
   i=NULL; j=NULL; k=NULL #truque teste
-  if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
-  j_limit <- i_limit}
-  if (i_limit <= 1){warning("Valor de i_limit deve ser maior do que 1, será considerado igual a 2")
-    i_limit <- 2
-    j_limit <- i_limit}
-  indices<-tidyr::expand_grid(i = 1:i_limit, j = 1:j_limit, k=1:k_limit)
+  if (length(i_limit) <= 1){warning("Tamanho de i_limit deve ser maior do que 1, será considerado 1:2")
+    i_limit <- 1:2}
+  if (length(j_limit) <= 1){warning("Tamanho de j_limit deve ser maior do que 1, será considerado 1:2")
+    j_limit <- 1:2}
+  indices<-tidyr::expand_grid(i = i_limit, j = j_limit, k=1:k_limit)
   indices<-indices %>% dplyr::filter(i!=j) %>% dplyr::mutate(x=paste0("x_",i,",",j,",",k)) #separa os indices dos vértices com ','
   return(indices)}
