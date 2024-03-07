@@ -15,63 +15,66 @@
 #'
 #'@examples
 #'# Exemplo de uso da função sem vetor_custos (usando runif para gerar custos)
-#'resultado1 <- gerar_custo(5, 5, 3)
+#'resultado1 <- gerar_custo(1:5, 1:5, 3)
 #'#print(resultado1)
 
-#'# Exemplo de uso da função com vetor_custos fornecido pelo usuário
-#'vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
-#'#resultado2 <- gerar_custo(7, 10, 3, vetor_custos_usuario)
+#'# Exemplo de uso da função com vetor_custo fornecido pelo usuário
+#'vetor_custo <- c(10, 20, 30, 40, 50, 60, 70, 80, 90,100,110,120)
+#'#resultado2 <- gerar_custo(1:3, 1:3, 2, vetor_custo)
 #'#print(resultado2)
 
 
 #'# Exemplo de uso da função com vetor_custos fornecido pelo usuário
 #'vetor_custos_usuario <- c(10, 20, 30, 40, 50, 60)
-#'resultado3 <- gerar_custo(2, 2, 3, vetor_custos_usuario)
+#'resultado3 <- gerar_custo(1:2, 1:2, 3, vetor_custos_usuario)
 #'#print(resultado3)
 #'
 #'n=5
 #'k=1
 #'
-#'vetor_custos=c(2.8,2,100,100,
+#'vetor_custo=c(2.8,2,100,100,
 #'+ 2.8,2.4,4.4,5.2,
 #'+ 2,2.1,4.2,5,
 #'+ 100,3.6,4.1,0.65,
 #'+ 0,0,0,0)
-#'custo <- gerar_custo(n,n,k,vetor_custos)
+#'custo <- gerar_custo(1:n,1:n,k,vetor_custo)
 #'print(custo)
 #'custo2 <- gerar_custo(-1, 5, 3)
 #'#print(custo2)
+#' gerar_custo(1:2,1:2,2)
+#' gerar_custo(1:3,1:4,1,vetor_custo=2:10)
+#' gerar_custo(1:3,1:4,1,vetor_custo=2:5)
 
 gerar_custo <- function(i_limit, j_limit, k_limit, vetor_custos = NULL) {
-   if (i_limit != j_limit){warning("Os valores de i_limit e j_limit devem ser iguais, será considerado i_limit para todos os efeitos")
-  j_limit <- i_limit}
-  if (i_limit <= 1){warning("Valor de i_limit deve ser maior do que 1, será considerado igual a 2")
-    i_limit <- 2
-    j_limit <- i_limit}
+  i=NULL; j=NULL; k=NULL #truque teste
+  if (length(i_limit) <= 1){warning("Tamanho de i_limit deve ser maior do que 1, será considerado 1:2")
+    i_limit <- 1:2}
+  if (length(j_limit) <= 1){warning("Tamanho de j_limit deve ser maior do que 1, será considerado 1:2")
+    j_limit <- 1:2}
    # Verificar se o tamanho do vetor_custos é válido
   if (!is.null(vetor_custos)) {
-    expected_length <- i_limit^2 * k_limit - k_limit * i_limit
+    expected_length <- length(i_limit)*length(j_limit)* k_limit - k_limit * min(length(i_limit),length(j_limit))
     if (length(vetor_custos) != expected_length) {
-      stop("O comprimento do vetor_custos não é válido.")
+      stop(paste0("O comprimento do vetor_custos não é válido. Espera-se "),expected_length)
     }
   }
 
 vetor_caracteres <- character()
 if (is.null(vetor_custos) || length(vetor_custos) == 0) {
-  for (i in 1:i_limit) {
-    for (j in 1:j_limit) {
+  for (i in seq_along(i_limit)) {
+    for (j in seq_along(j_limit)) {
       if (i != j) {
 
           if (i < j) {
             set.seed(i+j)
             custo_ij <- runif(1, 1, 100)
           } else {
-            index <- match(paste0("x", j, i, 1), vetor_caracteres)
+            index <- match(paste0("x_", j_limit[j],",", i_limit[i],",", 1), vetor_caracteres)
             custo_ij <- vetor_custos[index]
           }
 
           for (k in 1:k_limit) {
-            vetor_caracteres <- c(vetor_caracteres, paste0("x", i, j, k))
+            vetor_caracteres <- c(vetor_caracteres, paste0("x_", i_limit[i],",", j_limit[j],",", k))
             vetor_custos <- c(vetor_custos, custo_ij)
           }
 
@@ -79,11 +82,11 @@ if (is.null(vetor_custos) || length(vetor_custos) == 0) {
     }
   }
 } else {
-          for (i in 1:i_limit) {
-            for (j in 1:j_limit) {
+         for (i in seq_along(i_limit)) {
+           for (j in seq_along(j_limit)) {
               if (i != j) {
                 for (k in 1:k_limit) {
-            vetor_caracteres <- c(vetor_caracteres, paste0("x", i, j, k))
+            vetor_caracteres <- c(vetor_caracteres, paste0("x_",i_limit[i],",", j_limit[j],",", k))
                 }
               }
             }
