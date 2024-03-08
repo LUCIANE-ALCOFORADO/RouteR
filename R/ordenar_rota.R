@@ -15,18 +15,15 @@
 #' organizar_rota(vetor)
 #' ordenar_rota(vetor)
 #'
-#' vetor<-c("x131", "x241", "x321", "x451", "x511")
+#' vetor<-c("x_1,3,1", "x_2,4,1", "x_3,2,1", "x_4,5,1", "x_5,1,1")
 #' ordenar_rota(vetor)
 ordenar_rota <- function(vetor) {
    # dummies to trick R CMD check
-  Veiculo <- NULL; origem <- NULL; Rota <- NULL; destino <- NULL
+  Veiculo <- NULL; origem <- NULL; Trecho <- NULL; destino <- NULL
 df<- organizar_rota(vetor)
   # Ordenar os pontos de partida com base na distância entre o segundo número de uma linha e o primeiro número da linha seguinte
-  df<- df %>% dplyr::mutate(origem=as.numeric(substr(df$Rota, 1, 1)),destino=as.numeric(substr(df$Rota, 2, 2))) %>%
-    dplyr::arrange(Veiculo,origem) %>% dplyr::select(Veiculo,Rota,origem,destino)
-  #rotas_tipo <- rotas_tipo[order(c(NA, abs(rotas_tipo$Rota[-1] - rotas_tipo$Veiculo[-nrow(rotas_tipo)]))), ]
-
-  rota_tipo=NULL
+  df<- df %>% dplyr::arrange(Veiculo,origem)
+rota_tipo=NULL
 
 
   for (k in seq_along(unique(df$Veiculo)) ){
@@ -35,18 +32,18 @@ df<- organizar_rota(vetor)
     n <- nrow(df_k)
   nova_origem <- numeric(n)
   novo_destino <- numeric(n)
-  nova_rota <- numeric(n)
+  novo_trecho <- numeric(n)
   nova_origem[1] <- df$origem[1]
   novo_destino[1] <- df$destino[1]
-  nova_rota[1] <- df$Rota[1]
+  novo_trecho[1] <- df$Trecho[1]
   for (i in 2:n) {
     origem_anterior <- novo_destino[i - 1]
     indice_origem_anterior <- which(df$origem == origem_anterior)
     nova_origem[i] <- df$origem[indice_origem_anterior]
     novo_destino[i] <- df$destino[indice_origem_anterior]
-    nova_rota[i] <- paste0(nova_origem[i],novo_destino[i])
+    novo_trecho[i] <- paste0(nova_origem[i],"-",novo_destino[i])
   }
-  df_ord<- dplyr::bind_rows(Veiculo=rep(unique(df$Veiculo)[k],nrow(df %>% dplyr::filter(Veiculo==unique(df$Veiculo)[k]))),Rota=nova_rota, origem=nova_origem, destino=novo_destino)
+  df_ord<- dplyr::bind_rows(Veiculo=rep(unique(df$Veiculo)[k],nrow(df %>% dplyr::filter(Veiculo==unique(df$Veiculo)[k]))),Trecho=novo_trecho, origem=nova_origem, destino=novo_destino)
   rota_tipo<-dplyr::bind_rows(rota_tipo,df_ord)
   }
 

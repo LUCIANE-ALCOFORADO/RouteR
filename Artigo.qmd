@@ -41,7 +41,8 @@ n_restricao<- n_restricao+nrow(equilibrio)
 n_restricao
 unicidade <- RouteR::gerar_restricoes_unicidade(n,n,k,n_restricao)
 unicidade
-
+n_restricao<- n_restricao+nrow(unicidade)
+n_restricao
 Dados <- dplyr::bind_rows(custo,saida,retorno,equilibrio,unicidade)
 RouteR::gerar_rota(Dados)
 
